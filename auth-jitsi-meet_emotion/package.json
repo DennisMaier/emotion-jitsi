@@ -1,0 +1,15 @@
+{
+    "type": "module",
+    "name": "auth-jitsi-meet_emotion",
+    "version": "1.0.0",
+    "description": "Express server authorizing via OpenID Connect provider and signing jwt tokens with resulting information ",
+    "main": "./server.js",
+    "scripts": {
+        "start": "node ./server.js"
+    },
+    "dependencies": {
+        "express": "4.17.3",
+        "express-openid-connect": "2.7.2",
+        "jsonwebtoken": "8.5.1"
+    }
+}
