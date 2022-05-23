@@ -2,6 +2,18 @@
 ## Installation
 Execute the following commands in the corresponding folders.
 
+Sample patient login:
+name:patient 
+password: patient
+
+Sample physician login:
+name:physician
+password:physician
+
+keycloak admin login:
+name:admin
+password:admin
+
 **[Optional] cd ./jitsi-meet_emotion folder**
 
 Starts a webpack dev server. 
