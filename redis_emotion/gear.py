@@ -333,7 +333,32 @@ def storeResults(x):
         }}
 
     # Store the output in a stream
-    res_id = execute('XADD', 'output:room:all', 'MAXLEN', '~', 1000, '*', 'userId', userId, 'emotion', json.dumps(result))
+    result_id = execute('XADD', 'output:room:all', 'MAXLEN', '~', 1000, '*', 'userId', userId, 'emotion', json.dumps(result))
+    result_ms = int(str(result_id).split('-')[0])
+
+    #  Store in time series of emotion types
+    execute('TS.ADD', f'{room}:{userId}:anger', result_ms, emotion_result[0].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:contempt', result_ms, emotion_result[1].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:disgust', result_ms, emotion_result[2].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:fear', result_ms, emotion_result[3].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:happy', result_ms, emotion_result[4].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:neutral', result_ms, emotion_result[5].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:sad', result_ms, emotion_result[6].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    execute('TS.ADD', f'{room}:{userId}:surprise', result_ms, emotion_result[7].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+    # Store in time series of dominant emotion
+    execute('TS.ADD', f'{room}:{userId}:dominant', result_ms, emotion_result[7].item(), 'LABELS', 'conference_id', room, 'user_id', userId)
+
+   
+
+
 
     return result
 
