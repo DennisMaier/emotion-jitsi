@@ -1,5 +1,10 @@
 # emotion-jitsi
-## Installation
+
+## Quickinstall
+
+Visit [docker-jitsi-meet_emotion](https://github.com/ThomasFen/docker-jitsi-meet_emotion) and follow the instruction.
+
+## From source
 Execute the following commands in the corresponding folders.
 
 Sample patient login:
